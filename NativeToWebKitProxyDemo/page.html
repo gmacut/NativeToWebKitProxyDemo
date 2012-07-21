@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <title>Demo!</title>
+    </head>
+    <body>
+        <h1>Javascript to native code binding example</h1>
+        <p>This app listens on local port 2345. When it gets a connection, a registered javascript handler is called.</p>
+        <p>Handler then displays a sent message. It's kinda cool :)</p>
+        <p>(You can exit using ALT + F4)</p>
+        
+        <script type="text/javascript">
+            console.log("JS init");
+        
+            function myHandler(data){
+                alert(data);
+            };
+            
+            if (nativeHandler){
+                try {
+                    nativeHandler.gotData.connect(myHandler);
+                } catch (e) {
+                    alert(e);
+                }
+            } else {
+                alert('nativeHandler isn\'t defined');
+            }
+        </script>
+    </body>
+</html>
